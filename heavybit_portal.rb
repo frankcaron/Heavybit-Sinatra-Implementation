@@ -30,6 +30,9 @@ require 'stormpath-sdk'
 require_relative 'routes/init'
 require_relative 'helpers'
 
+#App route
+APP_ROOT = File.dirname(__FILE__)
+
 # Construct the main Heavybit Sinatra App as a Modular Sinatra App
 class HeavybitPortal < Sinatra::Base
 
@@ -48,10 +51,14 @@ class HeavybitPortal < Sinatra::Base
 	
 	# Enable Sessions
 	enable :sessions
+	# set :session_secret, 'jds7sk23j783hufds62l289'
 
 	# Construct the Stormpath Client
 	set :client, Stormpath::Client.new({ :api_key_file_location => ENV['STORMPATH_API_KEY_FILE_LOCATION'] })
   	set :application, settings.client.applications.get(ENV['STORMPATH_APPLICATION_URL'])
+
+  	# Register Helpers
+  	helpers Sinatra::HeavybitPortal::Helpers
 
 	# Register Routers
 	register Sinatra::HeavybitPortal::GeneralRouter

@@ -1,21 +1,31 @@
-Heavybit Sinatra-Stormpath Implementation
+Heavybit Sinatra-Stormpath Impl
 ===============================
 
-A starting point for a Sinatra-Stormpath implementation for Heavybit
+A starting point for a Sinatra-Stormpath implementation for Heavybit.
 
-Written by Frank Caron
-frank@stormpath.com
+Written by Frank Caron (frank@stormpath.com)
 
 
-# _Prelude_
+## Prelude
 
 This demonstrative impl has been written as a starting point for Heavybit's proposed projects which are implementing  [Stormpath](http://www.stormpath.com) in a Sinatra environment.
 
-# Instructions
+## Instructions
 
 Download the project and do a `bundle install`. 
 
-# Dependencies
+## Dependencies
 
 * Stormpath SDK
 * Sinatra
+
+## Setting Local Variables
+
+If you're working on OS X, `nano ~/.bash_profile` and add the following:
+
+	export STORMPATH_API_KEY_FILE_LOCATION=~/.stormpath/apiKey.properties
+	export STORMPATH_APPLICATION_URL=http://yourappurlhere
+
+## Disclosure
+
+Code provided as-is. No warranty, not guaranteed.

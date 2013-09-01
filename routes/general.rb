@@ -4,17 +4,21 @@ module Sinatra
 	module HeavybitPortal
 		module GeneralRouter
 			def self.registered(app)
-				#Catch
-				app.get '/name/:name' do
-					@message = "Hi, my name is (wicky, wicky) slim #{params[:name]}"
+
+				# Handle a protected resource request
+				app.get '/protected/*' do
+					# Check for auth
+					@message = "You have successfully viewed a protected resource."
 					erb :main
 				end
 
-				# Test
+				# Handle a non-protected source request
 				app.get '/' do 
-					@message = "Hello from GeneralRouter! Youse a genius."
-					erb :main
+					# Check for not auth.
+					@message = "Welcome. Please log in to continue."
+					erb :login
 				end
+
 			end
 		end
 	end
