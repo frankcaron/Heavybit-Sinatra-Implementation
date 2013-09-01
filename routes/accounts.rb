@@ -40,18 +40,23 @@ module Sinatra
 
 		        # Set the POST'd account's password to the value specified
 		        app.post '/accounts/set' do
-		        	
-		        	begin
-			        	account = settings.client.accounts.get CGI.unescape(params[:account_url])
-			        	account.password = params[:password]
-	            		account.save
 
-	            		@message = "Your password has been successfully reset."
-	            		erb :main
-            		rescue Stormpath::Error => error
-		            	@error = error.message
-		              	erb :password_set
-		            end
+		        	if (params[:password] == params[:password_confirm])
+			        	begin
+				        	account = settings.client.accounts.get CGI.unescape(params[:account_url])
+				        	account.password = params[:password]
+		            		account.save
+
+		            		@message = "Your password has been successfully reset."
+		            		erb :main
+	            		rescue Stormpath::Error => error
+			            	@error = error.message
+			              	erb :password_set
+			            end
+			        else 
+			        	@error = "Your passwords must match. Please try again."
+			        	erb :password_set
+			        end
 		        end
 				
 				# Serve the account creation screen
