@@ -1,13 +1,29 @@
+<!DOCTYPE html>
 <html>
 <head>
 	<title>Heavybit - Service Portal</title>
-	<link rel="stylesheet" type="text/css" href="<%= @APP_ROOT %>/style.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="/bootstrap.min.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="/heavybit.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="/font-awesome.min.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="/heavybit_portal.css" media="screen">
 </head>
 <body>
-	<div id="page">
-		<div id="container">
-			<h1>Welcome to our service portal</h1>
-			<p><%= yield %></p>
+	<div class="page">
+		<div class="container">
+
+			<% if is_authenticated? %>
+			<div class="account_bar">
+				<span class="welcome"><% if session[:display_name] %> Logged in as <a href="#"><%= session[:display_name] %></a><% end %></span>
+				<form method="post" action="/session">
+					<input type="submit" value="Log Out">
+					<input type="hidden" value="DELETE" name="_method">
+				</form>
+			</div>
+			<% end %>
+			<div class="content">
+				<div class="logo"><img src="/logo.nav.png"></div>
+				<p><%= yield %></p>
+			</div>
 		</div>
 	</div>
 </body>

@@ -18,6 +18,7 @@ Download the project and do a `bundle install`.
 
 * Stormpath SDK
 * Sinatra
+* Thin
 
 ## Setting Local Variables
 

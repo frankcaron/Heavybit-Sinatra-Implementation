@@ -1,0 +1,23 @@
+
+
+<div class="login_form">
+	<p>To create an account, please fill out the following form:</p>
+	<form action="/accounts/create" method="post">
+		<table class="login_table">
+			<% if @error != nil %>
+				<tr>
+					<td colspan="3" class="login_error">
+						<%= @error %>
+					</td>
+				</tr>
+			<% end %>
+			<tr>
+				<td>Password</td>
+				<td><input type="password" name="password" placeholder="New password"/></td>
+			</tr>
+			<tr>
+				<td rowspan="2" class="form_button"><input type="submit" value="Create" /></td>
+			</tr>
+		</table>
+	</form>
+</div>

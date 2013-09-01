@@ -1,0 +1,68 @@
+div.page {
+  margin-top: 30px;
+}
+
+div.logo {
+  padding-bottom: 10px;
+  border-color: rgb(250, 166, 53);
+  border-width: 5px;
+  border-bottom-style: solid;
+}
+
+div.container {
+  width: 940px;
+}
+
+div.login_form {
+  margin: auto;
+}
+
+div.form_links {
+  text-align: center;
+}
+
+table.login_table {
+  text-align: center;
+  margin: auto;
+}
+
+table.login_table input[type=text], table.login_table input[type=password] {
+  width: 200px;
+}
+table.login_table td.form_button, table.login_table td.form_links {
+  vertical-align: middle;
+  text-align: center;
+}
+
+td.login_error {
+  padding: 15px;
+  background-color: red;
+}
+
+
+div.account_bar {
+  width: 100%;
+  height: 20px;
+  margin-bottom: 30px;
+  padding-bottom: 10px;
+  display: inline-block;
+}
+
+div.account_bar input {
+  border: 0px;
+  background: none;
+  text-decoration: underline;
+  cursor: pointer; 
+  color: #d79741;
+  display: inline-block;
+  float: right;
+  margin: 0;
+  padding: 0;
+}
+
+div.account_bar span.welcome {
+  display: inline-block;
+  float: left;
+  margin: 0;
+  padding: 0;
+}

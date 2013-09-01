@@ -14,6 +14,7 @@
 ## September 1, 2013
 ## -----------------
 
+
 # Check for the appropriate environment variables
 # (Should not be explictly reading from the properties file 
 # as in the provided code)
@@ -23,18 +24,19 @@ if ENV['STORMPATH_API_KEY_FILE_LOCATION'].nil? &&
 end
 
 # External Reqs
-require "sinatra/base"
+require 'sinatra/base'
 require 'stormpath-sdk'
+require 'cgi'
 
 # Internal Reqs
 require_relative 'routes/init'
 require_relative 'helpers'
 
-#App route
-APP_ROOT = File.dirname(__FILE__)
-
 # Construct the main Heavybit Sinatra App as a Modular Sinatra App
 class HeavybitPortal < Sinatra::Base
+
+	# Set root
+	set :root, File.dirname(__FILE__)
 
 	# Set views
 	set :views, File.expand_path('../views', __FILE__)
@@ -53,6 +55,9 @@ class HeavybitPortal < Sinatra::Base
 	enable :sessions
 	# set :session_secret, 'jds7sk23j783hufds62l289'
 
+	# Set Method Override
+	enable :method_override
+
 	# Construct the Stormpath Client
 	set :client, Stormpath::Client.new({ :api_key_file_location => ENV['STORMPATH_API_KEY_FILE_LOCATION'] })
   	set :application, settings.client.applications.get(ENV['STORMPATH_APPLICATION_URL'])
@@ -61,7 +66,10 @@ class HeavybitPortal < Sinatra::Base
   	helpers Sinatra::HeavybitPortal::Helpers
 
 	# Register Routers
-	register Sinatra::HeavybitPortal::GeneralRouter
+	# Note that the order is critical as requests are handled top to bottom	
+	register Sinatra::HeavybitPortal::ProtectedRouter
+	register Sinatra::HeavybitPortal::AccountRouter
 	register Sinatra::HeavybitPortal::AuthRouter
+	register Sinatra::HeavybitPortal::GeneralRouter
 
 end

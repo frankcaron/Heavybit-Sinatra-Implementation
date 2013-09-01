@@ -1,3 +1,7 @@
+## GeneralRouter
+## 
+## This router handles all unprotected resource requests.
+
 require "sinatra/base"
 
 module Sinatra
@@ -5,17 +9,13 @@ module Sinatra
 		module GeneralRouter
 			def self.registered(app)
 
-				# Handle a protected resource request
-				app.get '/protected/*' do
-					# Check for auth
-					@message = "You have successfully viewed a protected resource."
-					erb :main
-				end
+			    app.before "/" do
+			      	# Do anything necessary before general requests
+			    end
 
-				# Handle a non-protected source request
+				# Handle a non-protected resource request
 				app.get '/' do 
-					# Check for not auth.
-					@message = "Welcome. Please log in to continue."
+					# Display login form
 					erb :login
 				end
 
