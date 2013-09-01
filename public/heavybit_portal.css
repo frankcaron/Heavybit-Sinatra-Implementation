@@ -26,6 +26,13 @@ table.login_table {
   margin: auto;
 }
 
+table.login_table td.form_labeler {
+  text-align: left;
+  height: 20px;
+  vertical-align: middle;
+  padding-right: 20px;
+}
+
 table.login_table input[type=text], table.login_table input[type=password] {
   width: 200px;
 }
@@ -34,11 +41,15 @@ table.login_table td.form_button, table.login_table td.form_links {
   text-align: center;
 }
 
-td.login_error {
-  padding: 15px;
-  background-color: red;
+table.login_table td.login_error {
+  padding: 20px;
+  background-color: #FF3333;
+  color: #000;
+  border-spacing: 10px;
+  margin-bottom: 20px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
 }
-
 
 div.account_bar {
   width: 100%;

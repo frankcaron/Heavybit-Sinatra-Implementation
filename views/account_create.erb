@@ -10,13 +10,38 @@
 						<%= @error %>
 					</td>
 				</tr>
+				<tr>
+					<td>&nbsp;</td>
+				</tr>
 			<% end %>
 			<tr>
-				<td>Password</td>
-				<td><input type="password" name="password" placeholder="New password"/></td>
+				<td class="form_labeler">Username</td>
+				<td><input type="text" name="username" placeholder="Username"/></td>
+			</tr>			
+			<tr>
+				<td class="form_labeler">First Name</td>
+				<td><input type="text" name="given_name" placeholder="First Name"/></td>
 			</tr>
 			<tr>
-				<td rowspan="2" class="form_button"><input type="submit" value="Create" /></td>
+				<td class="form_labeler">Last Name</td>
+				<td><input type="text" name="surname" placeholder="Last Name"/></td>
+			</tr>
+			<tr>
+				<td class="form_labeler">Email Address</td>
+				<td><input type="text" name="email" placeholder="Email"/></td>
+			</tr>
+			<tr>
+				<td class="form_labeler">Password</td>
+				<td><input type="password" name="password" placeholder="Password"/></td>
+			</tr>
+			<tr>
+				<td colspan="2" class="form_button">
+					<input type="submit" value="Create" /><br /><br />
+					<a href="/">Cancel</a>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="form_button"></td>
 			</tr>
 		</table>
 	</form>
