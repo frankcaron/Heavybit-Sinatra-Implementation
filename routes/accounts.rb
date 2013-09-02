@@ -51,10 +51,12 @@ module Sinatra
                             erb :main
                         rescue Stormpath::Error => error
                             @error = error.message
+                            @account_href = params[:account_url]
                             erb :password_set
                         end
                     else 
                         @error = "Your passwords must match. Please try again."
+                        @account_href = params[:account_url]
                         erb :password_set
                     end
                 end

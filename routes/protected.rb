@@ -28,7 +28,6 @@ module Sinatra
                     # 404
                     erb :not_found, {:status => 404}
                 end
-
             end
         end
     end
