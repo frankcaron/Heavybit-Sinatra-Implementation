@@ -35,41 +35,41 @@ require_relative 'helpers'
 # Construct the main Heavybit Sinatra App as a Modular Sinatra App
 class HeavybitPortal < Sinatra::Base
 
-	# Set root
-	set :root, File.dirname(__FILE__)
+    # Set root
+    set :root, File.dirname(__FILE__)
 
-	# Set views
-	set :views, File.expand_path('../views', __FILE__)
+    # Set views
+    set :views, File.expand_path('../views', __FILE__)
 
-	# Configure logging
-	configure :production, :development do
-		enable :logging
-	end
+    # Configure logging
+    configure :production, :development do
+        enable :logging
+    end
 
-	# Handle errors
-	not_found do
-		erb :not_found
-	end
-	
-	# Enable Sessions
-	enable :sessions
-	# set :session_secret, 'jds7sk23j783hufds62l289'
+    # Handle errors
+    not_found do
+        erb :not_found
+    end
+    
+    # Enable Sessions
+    enable :sessions
+    # set :session_secret, 'jds7sk23j783hufds62l289'
 
-	# Set Method Override
-	enable :method_override
+    # Set Method Override
+    enable :method_override
 
-	# Construct the Stormpath Client
-	set :client, Stormpath::Client.new({ :api_key_file_location => ENV['STORMPATH_API_KEY_FILE_LOCATION'] })
-  	set :application, settings.client.applications.get(ENV['STORMPATH_APPLICATION_URL'])
+    # Construct the Stormpath Client
+    set :client, Stormpath::Client.new({ :api_key_file_location => ENV['STORMPATH_API_KEY_FILE_LOCATION'] })
+    set :application, settings.client.applications.get(ENV['STORMPATH_APPLICATION_URL'])
 
-  	# Register Helpers
-  	helpers Sinatra::HeavybitPortal::Helpers
+    # Register Helpers
+    helpers Sinatra::HeavybitPortal::Helpers
 
-	# Register Routers
-	# Note that the order is critical as requests are handled top to bottom	
-	register Sinatra::HeavybitPortal::ProtectedRouter
-	register Sinatra::HeavybitPortal::AccountRouter
-	register Sinatra::HeavybitPortal::AuthRouter
-	register Sinatra::HeavybitPortal::GeneralRouter
+    # Register Routers
+    # Note that the order is critical as requests are handled top to bottom 
+    register Sinatra::HeavybitPortal::ProtectedRouter
+    register Sinatra::HeavybitPortal::AccountRouter
+    register Sinatra::HeavybitPortal::AuthRouter
+    register Sinatra::HeavybitPortal::GeneralRouter
 
 end
